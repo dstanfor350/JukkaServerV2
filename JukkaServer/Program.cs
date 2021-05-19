@@ -215,7 +215,7 @@ namespace JukkaServerLib
             else
             {
                 Console.WriteLine("Login Failed!!");
-                return new Response(new byte[0], 400, "Bad Request);
+                return new Response(new byte[0], 400, "Bad Request");
             }
         }
 
