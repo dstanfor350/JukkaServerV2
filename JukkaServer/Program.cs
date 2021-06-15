@@ -26,6 +26,7 @@ namespace JukkaServerLib
     {
         static public void RunServer()
         {
+            Console.WriteLine(DateTime.Now);
             var prefix = "http://*:4333/";
             HttpListener listener = new HttpListener();
             listener.Prefixes.Add(prefix);
@@ -36,6 +37,7 @@ namespace JukkaServerLib
             catch (HttpListenerException hlex)
             {
                 Console.WriteLine($"HttpListener exception: {hlex.Message}");
+                Console.WriteLine("Ensure Visual Studio is running as Administrator");
                 return;
             }
             while (listener.IsListening)
@@ -128,7 +130,10 @@ namespace JukkaServerLib
                             context.Response.ContentLength64 = ResponseBody.Length;
                             break;
 
-                            //default: // Dale: Need to complete this
+                        //default: // Dale: Need to complete this
+                        //    Console.WriteLine($"Unknown object read from body {body}");
+                        //    break;
+
                     }
                     Console.WriteLine();
                     break;
@@ -222,7 +227,9 @@ namespace JukkaServerLib
         static void Main(string[] args)
         {
             Console.WriteLine("===== Jukka HTTP RESTful Listener =====");
-
+            Console.WriteLine("\tEnsure Visual Studio or the executable is running as Administrator");
+            Console.WriteLine("\tCurrently must use Postman and the configured request");
+            
             RunServer();
         }
 
