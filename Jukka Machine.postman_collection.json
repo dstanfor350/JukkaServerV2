@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "ef040124-9b35-4eba-a4c6-24a5f02159e9",
+		"name": "Jukka Machine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userName",
+							"value": "dstanford350",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{localurl}}/prod/api/account/login",
+					"host": [
+						"{{localurl}}"
+					],
+					"path": [
+						"prod",
+						"api",
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order Status",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"machineId\": \"91cdb71d\",\r\n    \"orderId\": 1234,\r\n    \"status\": \"preparing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localurl}}/api/order/status",
+					"host": [
+						"{{localurl}}"
+					],
+					"path": [
+						"api",
+						"order",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order Item Status",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"machineId\": \"91cdb71d\",\r\n\"orderId\": 1,\r\n\"itemId\": 1,\r\n\"productId\": 1,\r\n\"status\": \"cooking\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localurl}}/api/orderitem/status",
+					"host": [
+						"{{localurl}}"
+					],
+					"path": [
+						"api",
+						"orderitem",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"machineId\": \"91cdb71d\",\r\n\"orderId\": \"1234\",\r\n\"storeId\": \"123456789\",\r\n\"invoiceNumber\": \"154300\",\r\n\"transactionId\": \"00000000000000010225\",\r\n\"approvedAmount\": \"7.99\",\r\n\"approvalCode\": \"934502\",\r\n\"maskedCardNumber\": \"XXXXXXXXXXXX1111\",\r\n\"cardType\": \"credit\",\r\n\"nameOnCard\": \"Jukka Machine\",\r\n\"issuerName\": \"Visa\",\r\n\"expiryDate\": \"0620\",\r\n\"entryMode\": \"swiped\",\r\n\"errorCode\": \"0\",\r\n\"message\": \"APPROVED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localurl}}/api/payment",
+					"host": [
+						"{{localurl}}"
+					],
+					"path": [
+						"api",
+						"payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Machine Status",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"machineId\": \"91cdb71d\",\r\n\"status\": \"offline\",\r\n\"reason\": \"HA Alarm - Left Product Tank.\",\r\n\"timeStamp\": \"1/30/2021 9:18:05 PM\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4333/api/machine/status",
+					"host": [
+						"localhost"
+					],
+					"port": "4333",
+					"path": [
+						"api",
+						"machine",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginOAuth",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userName",
+							"value": "dstanford350",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:51643/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51643",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JukkaServerLoginOAuth",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userName",
+							"value": "dstanford350",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:50161/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "50161",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

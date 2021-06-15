@@ -7,7 +7,13 @@ using Newtonsoft.Json;
 
 namespace JukkaServerLib
 {
-
+    //
+    // This class is NOT using OAuth 2.0 authorization.
+    // I is simply 'faking' the login autorization.
+    // The Jukk Machine.postman_collection.json provides a Collection with a request that
+    // does use OAuth 2.0 validation but is not used by this solution.
+    // See the OAuthOwinAuthentication solution for OAuth 2.0 validation.
+    //
     [JsonObject(MemberSerialization.OptIn)]
     public class Login
     {
@@ -75,7 +81,7 @@ namespace JukkaServerLib
             DateTime dt = DateTime.Now;
             TimeSpan duration = new TimeSpan(30, 0, 0, 0);
 
-            // Hard coded for now.  Will be set later if User is Authenticated.
+            // Hard coded for now with data from the API document.  Will be set later if User is Authenticated.
             Access_token = "R6DIvk7";
             Token_Type = "bearer";
             Expires_in = 1209599;
